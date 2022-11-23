@@ -7,7 +7,7 @@ class HttpError extends Error {
 	}
 }
 
-const funcHandler = async (req, res, handler) => {
+const routeMiddleware = async (req, res, handler) => {
     try {
         return res.status(200).send(respSuccess(await handler(req)))
     } catch (e) {
@@ -22,6 +22,6 @@ const raise = (message, code = 500) => {
 }
 
 export default {
-    funcHandler,
+    routeMiddleware,
     raise
 }
