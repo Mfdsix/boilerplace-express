@@ -4,10 +4,6 @@ import { Express } from 'express'
 
 import UserRoutes from "./user"
 
-const fs = require('fs')
-const path = require('path')
-const basename = path.basename(__filename)
-
 interface RouteContent {
     method?: "GET" | "POST" | "PUT" | "DELETE"
     url: string
