@@ -31,7 +31,7 @@ export default {
 			}
 		}
 	},
-	getOne: async (id) => {
+	getOne: async (id: string) => {
 		return User.findOne({
 			where: {
 				id

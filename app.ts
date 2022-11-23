@@ -1,14 +1,16 @@
-const express = require('express')
-const bodyParser = require("body-parser")
-const cors = require("cors")
-const fileUpload = require('express-fileupload')
+import express from 'express'
+import bodyParser from "body-parser"
+import cors from "cors"
+import fileUpload from 'express-fileupload'
+
 const app = express()
 require('dotenv').config();
 const port = process.env.PORT ?? 3000
 
-const morgan = require('morgan')
-const fs = require('fs')
-const path = require('path')
+import morgan from 'morgan'
+import fs from 'fs'
+import path from 'path'
+import routes from "./src/routes"
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,7 +26,7 @@ app.use(morgan('common', {
     skip: function (req, res) { return res.statusCode < 400 }
 }));
 
-require('./src/routes')(app);
+routes(app);
 
 app.listen(port, () => {
   console.log(`Listening :${port}`)

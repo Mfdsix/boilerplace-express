@@ -1,27 +1,28 @@
-const { respSuccess, respError } = require("./http")
+import { respSuccess, respError } from "./http"
+import Express from "express";
 
 class HttpError extends Error {
-	constructor(message, code) {
+	constructor(message: string, code: number) {
 	  super(message);
-	  this.name = code;
+	  this.name = String(code);
 	}
 }
 
-const routeMiddleware = async (req, res, handler) => {
+const routeMiddleware = async (req: Express.Request, res: Express.Response, handler: any) => {
     try {
         return res.status(200).send(respSuccess(await handler(req)))
-    } catch (e) {
+    } catch (e: any) {
         if(e instanceof HttpError)
-            return res.status(e.name).send(respError(e.message))
+            return res.status(parseInt(e.name)).send(respError(e.message))
         return res.status(500).send(respError(e.message))
     }
 }
 
-const raise = (message, code = 500) => {
+const raise = (message: string, code: number = 500) => {
     throw new HttpError(message, code)
 }
 
-export default {
+export {
     routeMiddleware,
     raise
 }

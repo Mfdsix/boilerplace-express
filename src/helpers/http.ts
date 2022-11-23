@@ -12,7 +12,7 @@ const respError = (message = "Error", data = null) => {
     }
 }
 
-export default {
+export {
     respSuccess,
     respError
 }
