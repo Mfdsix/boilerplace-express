@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app.js",
-    "start": "node app.js",
-    "lint": "eslint ./src"
+    "dev": "ts-node ./app.ts",
+    "build": "tsc",
+    "start": "node ./dist/app.js"
   },
   "keywords": [],
   "author": "",

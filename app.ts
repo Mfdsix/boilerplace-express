@@ -2,9 +2,10 @@ import express from 'express'
 import bodyParser from "body-parser"
 import cors from "cors"
 import fileUpload from 'express-fileupload'
+import dotenv from "dotenv"
 
 const app = express()
-require('dotenv').config();
+dotenv.config();
 const port = process.env.PORT ?? 3000
 
 import morgan from 'morgan'

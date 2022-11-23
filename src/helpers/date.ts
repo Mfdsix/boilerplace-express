@@ -1,6 +1,6 @@
 const moment = require("moment")
 
-const pluckYear = (dt) => {
+const pluckYear = (dt: string) => {
     if(dt){
         return moment(dt).year()
     }
@@ -8,7 +8,7 @@ const pluckYear = (dt) => {
     return null
 }
 
-const pluckMonth = (dt) => {
+const pluckMonth = (dt: string) => {
     if(dt){
         const months = [
             'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
@@ -21,7 +21,7 @@ const pluckMonth = (dt) => {
     return null
 }
 
-const formatDate = (dt, format = "DD MMMM YYYY") => {
+const formatDate = (dt: string, format: string = "DD MMMM YYYY") => {
     try{
         return moment(dt).format(format)
     }catch(e){
